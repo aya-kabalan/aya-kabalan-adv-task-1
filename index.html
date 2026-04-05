@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aya's Digital Library</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="aya-dark-theme">
+<!--library head-->
+    <header class="aya-main-header">
+        <div class="aya-container aya-flex-header">
+            <div class="aya-logo">
+                <span class="aya-logo-text">Aya's Digital Library</span>
+            </div>
+            <button id="openModalBtn" class="aya-btn-primary aya-add-btn">Add Book +</button>
+        </div>
+    </header>
+<!--hero container-->
+    <section class="aya-hero-section">
+        <div class="aya-container">
+            <div class="aya-hero-content">
+                <h1>Aya's Curated Collection</h1>
+                <p>Welcome to my private digital sanctuary, meticulously organized for focus, knowledge, and seamless cataloging.</p>
+                <a href="#aya-main-content" class="aya-btn-primary">Manage Collection</a>
+            </div>
+        </div>
+    </section>
+<!--control library-->
+    <main id="aya-main-content" class="aya-container">
+        <section class="aya-controls-wrapper">
+            <!--input search-->
+            <div class="aya-search-box">
+                <input type="text" id="searchInput"  placeholder="Search by title or author...">
+            </div>
+            <!--filter option-->
+            <div class="aya-filter-box">
+                <select id="categoryFilter">
+                    <option value="all">All Categories</option>
+                    <option value="Tech">Nova</option>
+                    <option value="Literature">Geography</option>
+                    <option value="Science">Science</option>
+                </select>
+            </div>
+        </section>
+<!--display content-->
+        <section class="aya-books-display">
+            <h2 class="aya-section-title">Library content</h2>
+            <div id="booksContainer" class="aya-books-grid">
+                <div class="aya-book-card">
+                    <h3>Book Title</h3>
+                    <p>Author: Author Name</p>
+                    <div class="aya-book-footer">
+                        <!--button delete-->
+                        <button class="aya-btn-delete">Delete</button>
+                        <!--status book-->
+                        <span class="aya-book-status available">Available</span> 
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+<!--add new book&information book-->
+    <div class="aya-modal" id="addBookModal">
+        <div class="aya-modal-content">
+            <h3>Add New Book</h3>
+            <form id="addBookForm">
+                <div class="aya-form-group">
+                    <label>Book Title</label>
+                    <input type="text" id="bookTitle" required placeholder="Enter book title...">
+                </div>
+                <div class="aya-form-group">
+                    <label>Author</label>
+                    <input type="text"  id="bookAuthor"required placeholder="Enter author name...">
+                </div>
+                <div class="aya-form-group">
+                    <label>Category</label>
+                    <select id="bookCategory"required>
+                        <option value="Tech">Nova</option>
+                        <option value="Literature">Geography</option>
+                        <option value="Science">Science</option>
+                    </select>
+                </div>
+                <!--button add new book-->
+                <button type="submit" class="aya-btn-primary" style="width: 100%;">Add to Inventory</button>
+            </form>
+        </div>
+    </div>
+<!--footer-->
+    <footer class="aya-main-footer">
+        <div class="aya-container">
+            <p>Aya's Private Library &copy; 2026 | Curated Collection</p>
+        </div>
+    </footer>
+    <script src="assets/main.js"></script>
+</body>
+</html>

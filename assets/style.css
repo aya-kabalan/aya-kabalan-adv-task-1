@@ -1,0 +1,263 @@
+:root {
+    --primary-gray: #7f8c8d;
+    --secondary-gray: #95a5a6;
+    --dark-bg: #121212;
+    --card-bg: #1e1e1e;
+    --white: #ffffff;
+    --text-main: #f1f1f1;
+    --text-muted: #aaaaaa;
+    --border-color: #333333;
+    --card-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    --success-green: #27ae60;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:  sans-serif;
+}
+html {
+    scroll-behavior: smooth;
+}
+body.aya-dark-theme {
+    background-color: var(--dark-bg);
+    color: var(--text-main);
+    line-height: 1.5;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.aya-main-header {
+    background-color: var(--card-bg);
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.aya-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.aya-flex-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+.aya-logo {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--white);
+    white-space: nowrap;
+}
+.aya-btn-primary {
+    background: var(--primary-gray);
+    color: var(--dark-bg);
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    transition: 0.3s ease;
+    text-decoration: none;
+}
+.aya-btn-primary:hover {
+    background: var(--secondary-gray);
+    transform: translateY(-2px);
+}
+.aya-hero-section {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1516979187457-637abb4f9353?q=80&w=2070&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    padding: 80px 0;
+    text-align: left;
+    color: var(--white);
+    min-height: 35vh;
+    display: flex;
+    align-items: center;
+}
+.aya-hero-content h1 {
+    font-size: 40px;
+    margin-bottom: 16px;
+    line-height: 5;
+}
+.aya-hero-content p {
+    font-size: 18px;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+    max-width: 600px;
+}
+.aya-controls-wrapper {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: -30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+}
+input, select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--dark-bg);
+    color: var(--text-main);
+    font-size: 16px;
+    transition: 0.3s;
+}
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--primary-gray);
+}
+.aya-books-display {
+    padding: 40px 0;
+}
+.aya-section-title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+.aya-books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 25px;
+}
+.aya-book-card {
+    background: var(--card-bg);
+    padding: 22px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 200px;
+    transition: 0.3s;
+}
+.aya-book-card:hover {
+    transform: translateY(-5px);
+    border-color: #444;
+}
+.aya-book-card h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: var(--white);
+}
+.aya-book-card p {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+.aya-book-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+    padding-top: 15px;
+    margin-top: auto;
+}
+.aya-btn-delete {
+    background-color: rgba(72, 188, 22, 0.15);
+    color: var(--success-green);
+    border: 1px solid var(--success-green);
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 12px;
+    transition: 0.3s ease;
+}
+.aya-btn-delete:hover {
+    background-color: var(--success-green);
+    color: var(--white);
+}
+.aya-book-status {
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: #252525;
+}
+.aya-book-status.available { 
+    color: var(--success-green); 
+}
+.aya-book-status.unavailable { 
+    color: var(--success-green); 
+}
+.aya-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    padding: 20px;
+}
+.aya-modal.active {
+    display: flex;
+}
+.aya-modal-content {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 450px;
+    position: relative;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
+}
+.aya-form-group { 
+    margin-bottom: 20px; 
+}
+.aya-form-group label { 
+    display: block; 
+    margin-bottom: 8px; 
+    font-size: 12px; 
+    color: var(--text-muted);
+}
+.aya-main-footer {
+    background-color: var(--card-bg);
+    padding: 20px 0;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    margin-top: auto;
+}
+@media (max-width: 992px) {
+    .aya-flex-header {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+    .aya-hero-section {
+        padding: 60px 0px;
+        text-align: center;
+    }
+    .aya-hero-content h1 {
+        font-size: 35px;
+        line-height: 1; 
+    }
+    .aya-hero-content p {
+        font-size: 16px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .aya-controls-wrapper {
+        grid-template-columns: 100%;
+    }
+    .aya-books-grid {
+        grid-template-columns: 100%;
+    }
+}
+@media (min-width: 600px) and (max-width: 992px) {
+    .aya-books-grid {
+        grid-template-columns: repeat(2, 50%); 
+    }
+}
