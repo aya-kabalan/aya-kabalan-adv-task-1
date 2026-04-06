@@ -64,16 +64,14 @@ class Library {
             this.renderBooks(this.#books);
         }
         else {
-            const filtered = this.#books.filter(b => b.category === category);
+            const filtered = this.#books.filter(n => n.category === category);
             this.renderBooks(filtered);
         }
     }
     renderBooks(booksList) {
         this.#container.innerHTML = "";
         if (booksList.length === 0) {
-            this.#container.innerHTML = `<p style="color: #aaa;
-            text-align: center; 
-            grid-column: 1/-1;">No books found.</p>`;
+            this.#container.innerHTML = `<p style="color: #aaa; text-align: center; grid-column: 1/-1;">No books found.</p>`;
             return;
         }
         booksList.forEach(book => {
@@ -82,12 +80,13 @@ class Library {
             card.innerHTML = `
                 <div>
                     <h3>${book.title}</h3>
-                    <p>${book.displayInfo()}</p> 
+                    <p>By: ${book.author}</p> 
                     <span class="aya-book-status ${book.isAvailable ? 'available' : 'unavailable'}">
                         ${book.isAvailable ? 'Available' : 'Unavailable'}
                     </span>
                 </div>
                 <div class="aya-book-footer">
+                    <button class="aya-btn-info">Info</button>
                     <button class="aya-btn-delete">Delete</button>
                     <button class="aya-btn-primary toggle-btn" style="padding: 6px 12px; font-size: 0.9rem;">Status</button>
                 </div>
@@ -100,17 +99,21 @@ class Library {
             toggleBtn.addEventListener('click', () => {
                 this.toggleAvailability(book.title);
             });
+            const infoBtn = card.querySelector('.aya-btn-info');
+            infoBtn.addEventListener('click', () => {
+                alert(book.displayInfo());
+            });
             this.#container.appendChild(card);
         });
     }
 }
-const myLibrary = new Library("booksContainer");
-myLibrary.addBook(new Book("earth book", "Ali", "geography"));
-myLibrary.addBook(new ReferenceBook("stars", "aya kabalan", "nova", "shelf-4"));
+const ayaLibrary = new Library("booksContainer");
+ayaLibrary.addBook(new Book("earth book", "Ali", "geography"));
+ayaLibrary.addBook(new ReferenceBook("stars", "aya kabalan", "nova", "shelf-4"));
 const searchInput = document.getElementById("searchInput");
-searchInput?.addEventListener("input", () => myLibrary.searchBooks(searchInput.value));
+searchInput?.addEventListener("input", () => ayaLibrary.searchBooks(searchInput.value));
 const categoryFilter = document.getElementById("categoryFilter");
-categoryFilter?.addEventListener("change", () => myLibrary.filterByCategory(categoryFilter.value));
+categoryFilter?.addEventListener("change", () => ayaLibrary.filterByCategory(categoryFilter.value));
 const modal = document.getElementById("addBookModal");
 const openModalBtn = document.getElementById("openModalBtn");
 const addBookForm = document.getElementById("addBookForm");
@@ -120,7 +123,7 @@ addBookForm?.addEventListener("submit", (e) => {
     const title = document.getElementById("bookTitle").value;
     const author = document.getElementById("bookAuthor").value;
     const category = document.getElementById("bookCategory").value;
-    myLibrary.addBook(new Book(title, author, category));
+    ayaLibrary.addBook(new Book(title, author, category));
     addBookForm.reset();
     modal.classList.remove("active");
 });

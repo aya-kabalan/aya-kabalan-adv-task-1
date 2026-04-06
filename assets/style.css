@@ -177,6 +177,26 @@ input:focus, select:focus {
     background-color: var(--success-green);
     color: var(--white);
 }
+.aya-btn-info {
+    background-color: rgba(52, 152, 219, 0.15); 
+    color: #3498db;
+    border: 1px solid #3498db;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 12px;
+    transition: 0.3s ease;
+}
+.aya-btn-info:hover {
+    background-color: #3498db;
+    color: #ffffff;
+}
+.aya-book-footer {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 10px;
+}
 .aya-book-status {
     font-size: 12px;
     font-weight: bold;
@@ -255,9 +275,18 @@ input:focus, select:focus {
     .aya-books-grid {
         grid-template-columns: 100%;
     }
+    .aya-book-footer {
+        flex-wrap: wrap; 
+        gap: 10px;      
+        justify-content: center; 
+    }
 }
 @media (min-width: 600px) and (max-width: 992px) {
     .aya-books-grid {
-        grid-template-columns: repeat(2, 50%); 
+        grid-template-columns: repeat(2, 200px);
+    }
+    .aya-book-footer {
+        flex-wrap: nowrap;
+        justify-content: space-between;
     }
 }

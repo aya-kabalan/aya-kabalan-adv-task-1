@@ -68,12 +68,10 @@ class Library {
             this.renderBooks(filtered)
         }
     }
-    private renderBooks(booksList: Book[]): void {
+private renderBooks(booksList: Book[]): void {
         this.#container.innerHTML = ""
         if (booksList.length === 0) {
-            this.#container.innerHTML = `<p style="color: #aaa;
-            text-align: center; 
-            grid-column: 1/-1;">No books found.</p>`
+            this.#container.innerHTML = `<p style="color: #aaa; text-align: center; grid-column: 1/-1;">No books found.</p>`
             return
         }
         booksList.forEach(book => {
@@ -82,12 +80,13 @@ class Library {
             card.innerHTML = `
                 <div>
                     <h3>${book.title}</h3>
-                    <p>${book.displayInfo()}</p> 
+                    <p>By: ${book.author}</p> 
                     <span class="aya-book-status ${book.isAvailable ? 'available' : 'unavailable'}">
                         ${book.isAvailable ? 'Available' : 'Unavailable'}
                     </span>
                 </div>
                 <div class="aya-book-footer">
+                    <button class="aya-btn-info">Info</button>
                     <button class="aya-btn-delete">Delete</button>
                     <button class="aya-btn-primary toggle-btn" style="padding: 6px 12px; font-size: 0.9rem;">Status</button>
                 </div>
@@ -96,10 +95,16 @@ class Library {
             deleteBtn.addEventListener('click', () => {
                 this.deleteBook(book.title)
             })
+            
             const toggleBtn = card.querySelector('.toggle-btn') as HTMLButtonElement
             toggleBtn.addEventListener('click', () => {
                 this.toggleAvailability(book.title)
             })
+            const infoBtn = card.querySelector('.aya-btn-info') as HTMLButtonElement
+            infoBtn.addEventListener('click', () => {
+                alert(book.displayInfo())
+            })
+
             this.#container.appendChild(card)
         })
     }
